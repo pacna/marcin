@@ -1,6 +1,6 @@
 #ifndef GLOBAL
 #define GLOBAL
 
-#include "is_prime.h"
+#include "utils.h"
 
 #endif

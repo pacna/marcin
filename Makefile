@@ -2,7 +2,7 @@ CC = gcc
 
 PROG = sdl-ulam-spiral
 
-SRCS = $(addprefix src/, main.c global.c is_prime.c)
+SRCS = $(addprefix src/, main.c global.c utils.c)
 
 OBJS = $(SRCS:.c=.o)
 
