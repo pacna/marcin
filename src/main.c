@@ -5,7 +5,6 @@
 #define ROW 5
 #define COLUMN 5
 
-
 void print_result(unsigned char input) {
    if (input != '*') {
       printf("%d \t", input);
@@ -30,6 +29,9 @@ int main() {
       }
       printf("\n");
    }
+
+   coordinate center = find_center(ROW, COLUMN);
+   printf("%d %d \n", center.x, center.y);
 
    return 0;
 }
