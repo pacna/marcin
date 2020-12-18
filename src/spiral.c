@@ -8,68 +8,8 @@ unsigned int should_go_up = false;
 unsigned int should_go_left = true;
 unsigned int should_go_down = false;
 
-int has_more_than_max_step(unsigned int current_step, unsigned int max_step) {
-    // printf("%d %d \n", current_step, max_step);
-
-    if (current_step > max_step) {
-        return 1;
-    }
-    return 0;
-}
-
-int is_first_step(unsigned current_step) {
-    if (current_step == 0 || current_step == 1) {
-        return 1;
-    }
-    return 0;
-}
-// void update_command(unsigned int cmd, unsigned int *current_step, unsigned int *max_step) {
-//     if (cmd == Right) {
-//         if (*current_step == *max_step) {
-//             command = cmd;
-//             *current_step = 1;
-//         } else {
-//             (*current_step)++;        
-//         }
-//     }
-//     else if (cmd == Up) {
-//         if (*current_step == *max_step) {
-//             command = cmd;
-//             *current_step = 1;
-//         } else {
-//             (*current_step)++;
-//         }
-//     }
-//     else if (cmd == Left) {
-//         if (*current_step == *max_step) {
-//             command = cmd;
-//             *current_step = 1;
-//         } else {
-//             (*current_step)++;
-//         }
-//     }
-//     else if (cmd == Down) {
-//         if (*current_step == *max_step) {
-//             command = cmd;
-//             *current_step = 1;
-//         } else {
-//             (*current_step)++;
-//         }
-//     }
-//     else {
-//         printf("Invalid command %d \n", cmd);
-//     }
-
-//     printf("%d \t \n", command);
-// }
-
-unsigned int determine_which_direction(unsigned int current_number, unsigned int *current_step, unsigned int *max_step) {
-    if (current_number == 2) {
-        should_go_right = false;
-        should_go_up = true;
-        return Right;
-    }
-    else if (!is_even(*max_step)) {
+unsigned int determine_which_direction(unsigned int *current_step, unsigned int *max_step) {
+    if (!is_even(*max_step)) {
         (*current_step)++;
         if (*current_step == *max_step) {
             *current_step = 0;
@@ -80,6 +20,7 @@ unsigned int determine_which_direction(unsigned int current_number, unsigned int
             }
 
             if (should_go_up) {
+                (*max_step)++;
                 should_go_up = false;
                 should_go_right = true;
                 return Up;
@@ -105,6 +46,7 @@ unsigned int determine_which_direction(unsigned int current_number, unsigned int
             }
 
             if (should_go_down) {
+                (*max_step)++;
                 should_go_down = false;
                 should_go_left = true;
                 return Down;
@@ -118,12 +60,6 @@ unsigned int determine_which_direction(unsigned int current_number, unsigned int
         if (should_go_down) {
             return Down;
         }
-    }
-}
-
-void update_step(unsigned int *current_step, unsigned int *max_step) {
-    if (is_first_step(*current_step)) {
-        (*max_step)++;
     }
 }
 
@@ -172,35 +108,28 @@ void place_numbers_in_spiral(coordinate center, unsigned char spiral[ROW][COLUMN
     unsigned int x_position = center.x;
     unsigned int y_position = center.y;
     unsigned int current_step = 0;
-    unsigned int max_step = 0;
+    unsigned int max_step = 1;
 
     spiral[center.x][center.y] = 1;
 
-    for (int i = 2; i <= 4; i++) {
-        unsigned int command = determine_which_direction(i, &current_step, &max_step);
+    for (int i = 2; i <= size_of_spiral; i++) {
+        unsigned int command = determine_which_direction(&current_step, &max_step);
         switch(command) {
             case Right:
-                update_step(&current_step, &max_step);
                 move_right(x_position, &y_position, spiral, i);
-                // update_command(Up, &current_step, &max_step);
                 break;
 
             case Up:
-                move_up(&x_position, y_position, spiral, i);        
-                // update_command(Left, &current_step, &max_step);
+                move_up(&x_position, y_position, spiral, i);
                 break;
 
             case Left:
-                update_step(&current_step, &max_step);
                 move_left(x_position, &y_position, spiral, i);
-                // update_command(Down, &current_step, &max_step);
                 break;
 
             case Down:
                 move_down(&x_position, y_position, spiral, i);
-                // update_command(Right, &current_step, &max_step);
                 break;   
         }
-        // printf("%d \t %d%d \t %d \n", command, x_position, y_position, i);
     }
 }

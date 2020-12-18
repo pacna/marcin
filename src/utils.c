@@ -27,13 +27,11 @@ int is_even(unsigned int num) {
 }
 
 coordinate find_center(unsigned int row, unsigned int column) {
-    double center_row;
+    double center_row = floor(row /2 );
     double center_column;
     if (is_even(row)) {
-        center_row = floor(row /2 ) - 1;
         center_column = floor(column /2 ) - 1;
     } else {
-        center_row = floor(row / 2 );
         center_column = floor(column / 2);
     }
 

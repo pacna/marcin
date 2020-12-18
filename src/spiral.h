@@ -1,7 +1,7 @@
 #ifndef SPIRAL
 #define SPIRAL
 
-enum DIRECTiON {
+enum DIRECTION {
     Right = 0,
     Up = 1,
     Left = 2,
