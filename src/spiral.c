@@ -11,6 +11,7 @@ unsigned int should_go_down = false;
 unsigned int determine_which_direction(unsigned int *current_step, unsigned int *max_step) {
     if (!is_even(*max_step)) {
         (*current_step)++;
+        // order matters. right -> up
         if (*current_step == *max_step) {
             *current_step = 0;
             if (should_go_right) {
@@ -37,6 +38,7 @@ unsigned int determine_which_direction(unsigned int *current_step, unsigned int 
     }
     else if (is_even(*max_step)) {
         (*current_step)++;
+        // order matters. left -> down
         if (*current_step == *max_step) {
             *current_step = 0;
             if (should_go_left) {
@@ -66,7 +68,7 @@ unsigned int determine_which_direction(unsigned int *current_step, unsigned int 
 void place_number(coordinate current_position, unsigned char spiral[ROW][COLUMN], int current_number) {
     unsigned int current_size = current_position.x * current_position.y;
     // make sure we aren't placing numbers outside of the spiral.
-    if (current_size <= size_of_spiral ) {
+    if (current_size <= size_of_spiral) {
         spiral[current_position.x][current_position.y] = current_number;
     }
 }

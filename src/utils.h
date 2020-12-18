@@ -6,7 +6,7 @@ typedef struct Coordinate {
     unsigned int y;
 } coordinate;
 
-extern int is_prime(int num);
-extern int is_even(unsigned int num);
+extern bool is_prime(int num);
+extern bool is_even(unsigned int num);
 extern coordinate find_center(unsigned int row, unsigned int column);
 #endif

@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include "global.h"
 
 void print_result(unsigned char input) {
