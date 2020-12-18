@@ -1,5 +1,5 @@
-#ifndef IS_PRIME
-#define IS_PRIME
+#ifndef UTILS
+#define UTILS
 
 typedef struct Coordinate {
     unsigned int x;
