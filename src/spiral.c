@@ -2,9 +2,10 @@
 
 unsigned int size_of_spiral = ROW * COLUMN;
 
+// order matters. right -> up
 unsigned int should_go_right = true;
 unsigned int should_go_up = false;
-
+// order matters. left -> down
 unsigned int should_go_left = true;
 unsigned int should_go_down = false;
 

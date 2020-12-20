@@ -25,6 +25,27 @@ bool is_even(unsigned int num) {
     return (num % 2) == 0;
 }
 
+void print_result(unsigned char input) {
+   if (input != '*') {
+      printf("%d \t", input);
+   } else {
+      printf("%c \t", input);
+   }
+}
+
+void print_ulam_spiral_in_terminal(unsigned char ulam_spiral[ROW][COLUMN]) {
+   for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COLUMN; j++) {
+         if (!is_prime(ulam_spiral[i][j])) {
+            ulam_spiral[i][j] = '*';
+         }
+
+         print_result(ulam_spiral[i][j]);
+      }
+      printf("\n"); 
+   }
+}
+
 coordinate find_center(unsigned int row, unsigned int column) {
     double center_row = floor(row /2 );
     double center_column;

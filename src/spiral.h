@@ -1,5 +1,5 @@
-#ifndef SPIRAL
-#define SPIRAL
+#ifndef _SPIRAL
+#define _SPIRAL
 
 enum DIRECTION {
     Right = 0,
