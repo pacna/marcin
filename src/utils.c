@@ -11,7 +11,7 @@ bool is_prime(int num) {
    int init_num = 5;
 
     while ((init_num * init_num) <=  num) {
-        if ( num % init_num == 0  || num % (init_num + 2 ) == 0) {
+        if (num % init_num == 0  || num % (init_num + 2 ) == 0) {
             return false;
         }
 
@@ -25,6 +25,14 @@ bool is_even(unsigned int num) {
     return (num % 2) == 0;
 }
 
+unsigned char get_prime_number_or_not(int num) {
+    if (is_prime(num)) {
+        return num;
+    } else {
+        return '*';
+    }
+}
+
 void print_result(unsigned char input) {
    if (input != '*') {
       printf("%d \t", input);
@@ -35,14 +43,10 @@ void print_result(unsigned char input) {
 
 void print_ulam_spiral_in_terminal(unsigned char ulam_spiral[ROW][COLUMN]) {
    for (int i = 0; i < ROW; i++) {
-      for (int j = 0; j < COLUMN; j++) {
-         if (!is_prime(ulam_spiral[i][j])) {
-            ulam_spiral[i][j] = '*';
-         }
-
-         print_result(ulam_spiral[i][j]);
-      }
-      printf("\n"); 
+        for (int j = 0; j < COLUMN; j++) {
+            print_result(ulam_spiral[i][j]);
+        }
+        printf("\n"); 
    }
 }
 

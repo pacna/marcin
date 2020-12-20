@@ -2,12 +2,19 @@
 
 ## Prerequisites
 
-Linux
+### Linux
 ```
 apt-get install libsdl2-dev
 ```
 
-## How to run
+## Running
+Hoping all you need to do is run `make`.
 ```
+
+# build
 make
+
+# run
+./sdl-ulam-spiral
+
 ```
