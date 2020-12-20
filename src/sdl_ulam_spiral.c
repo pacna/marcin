@@ -13,12 +13,10 @@ void process_input() {
     }
 }
 
-void load_text() {
-
+void display_ulam_spiral(SDL_Renderer *renderer, int x_coordinate, int y_coordinate, char *ulam_output) {
     TTF_Font *arial = TTF_OpenFont("fonts/OpenSans-Regular.ttf", 24);
     int rect_text_width = WINDOW_WIDTH;
     int rect_text_height = 60;
-    int rect_text_x_center = rect_text_width /2; 
 
     if(!arial) {
         printf("Could not initialize font: %s\n", SDL_GetError());
@@ -27,15 +25,13 @@ void load_text() {
     SDL_Color green = {37, 193, 29};
 
     SDL_Rect message_rect;
-    // center text in the middle of the screen
-    message_rect.x = WINDOW_WIDTH/2 - rect_text_x_center; 
-    message_rect.y = 0;
+
+    message_rect.x = x_coordinate; 
+    message_rect.y = y_coordinate;
     message_rect.w = rect_text_width;
     message_rect.h = rect_text_height;
 
-    unsigned char *text_message = "8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 * 0";
-
-    SDL_Surface *surface_message = TTF_RenderText_Solid(arial, text_message, green);
+    SDL_Surface *surface_message = TTF_RenderText_Solid(arial, ulam_output, green);
 
     SDL_Texture *message = SDL_CreateTextureFromSurface(renderer, surface_message);
 
@@ -49,11 +45,19 @@ void load_text() {
     TTF_CloseFont(arial);
 }
 
+void render_ulam_spiral() {
+    int y_position = 0;
+    for(int i = 0; i< 3; i++) {
+        display_ulam_spiral(renderer, 0, y_position, "8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 * 0");
+        y_position+=60;
+    }
+}
+
 void render() {
     // color should look like the vs code monokai background color
     SDL_SetRenderDrawColor(renderer, 38, 41, 34, 1);
     SDL_RenderClear(renderer);
-    load_text();
+    render_ulam_spiral();
     SDL_RenderPresent(renderer);
 }
 
