@@ -2,7 +2,7 @@
 #define _INIT
 
 #define WINDOW_HEIGHT 640
-#define WINDOW_WIDTH 600
+#define WINDOW_WIDTH 660
 
 extern int init_program();
 

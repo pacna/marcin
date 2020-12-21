@@ -50,8 +50,7 @@ void render_ulam_spiral() {
     coordinate center = find_center(ROW, COLUMN);
     place_numbers_in_spiral(center, ulam_spiral);
     int y_position = 0;
-    // # of elements in the array (ROW or COLUMN) * 2 (since we want spaces between possible _prime_number)
-    char possible_characters_in_a_row[MAX_NUM_OF_DIGITS * (COLUMN * 2)];;
+    char possible_characters_in_a_row[80];
     char possible_prime_number[MAX_NUM_OF_DIGITS + 1];
     for(int i = 0; i< ROW; i++) {
         for (int j = 0; j< COLUMN; j++) {
@@ -61,7 +60,6 @@ void render_ulam_spiral() {
                     sprintf(possible_prime_number, "%d", ulam_spiral[i][j]);
                 } else {
                     sprintf(possible_prime_number, "%d ", ulam_spiral[i][j]);
-                    // printf("%d",possible_prime_number[1]);
                 }
             } 
             else {

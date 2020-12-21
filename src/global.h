@@ -1,9 +1,9 @@
 #ifndef _GLOBAL
 #define _GLOBAL
 
-#define ROW 5
-#define COLUMN 5
-
+#define ROW 7
+#define COLUMN 7
+#define TERMINAL_MODE 2
 extern unsigned char ulam_spiral[ROW][COLUMN];
 
 // C header
