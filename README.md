@@ -1,5 +1,5 @@
 # SDL Ulam Spiral
-SDL Ulam spiral is a [Ulam Spiral](https://en.wikipedia.org/wiki/Ulam_spiral) generator. Built using [SDL](https://www.libsdl.org/).
+SDL Ulam Spiral is a [Ulam Spiral](https://en.wikipedia.org/wiki/Ulam_spiral) generator. Built using [SDL](https://www.libsdl.org/).
 
 ### SDL
 ![sdl-ulam-spiral](./docs/sdl-ulam-spiral.png)
