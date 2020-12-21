@@ -15,9 +15,9 @@ void process_input() {
 }
 
 void display_ulam_spiral(SDL_Renderer *renderer, int x_coordinate, int y_coordinate, char *ulam_output) {
-    TTF_Font *arial = TTF_OpenFont("fonts/OpenSans-Regular.ttf", 24);
+    TTF_Font *arial = TTF_OpenFont("fonts/OpenSans-Regular.ttf", 60);
     int rect_text_width = WINDOW_WIDTH;
-    int rect_text_height = 60;
+    int rect_text_height = 80;
 
     if(!arial) {
         printf("Could not initialize font: %s\n", SDL_GetError());
@@ -76,7 +76,7 @@ void render_ulam_spiral() {
             memset(possible_prime_number, 0, strlen(possible_prime_number));
         }
         display_ulam_spiral(renderer, 0, y_position, possible_characters_in_a_row);
-        y_position+=60;
+        y_position+=80;
         // empty out possible_characters_in_a_row
         memset(possible_characters_in_a_row, 0, strlen(possible_characters_in_a_row));
     }
