@@ -113,7 +113,7 @@ void place_numbers_in_spiral(coordinate center, unsigned char spiral[ROW][COLUMN
     unsigned int current_step = 0;
     unsigned int max_step = 1;
 
-    spiral[center.x][center.y] = 1;
+    spiral[center.x][center.y] = '*';
 
     for (int i = 2; i <= size_of_spiral; i++) {
         unsigned int command = determine_which_direction(&current_step, &max_step);
