@@ -2,5 +2,5 @@
 #define _SDL_ULAM_SPIRAL
 
 #define MAX_NUM_OF_DIGITS 3
-extern void run_program();
+extern void run_sdl_ulam_spiral();
 #endif

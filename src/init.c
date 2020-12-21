@@ -48,7 +48,7 @@ int init_TTF() {
     return 1;
 }
 
-int init_program() {
+int init_sdl_ulam_spiral() {
     if (!init_window()) {
         return 0;
     }

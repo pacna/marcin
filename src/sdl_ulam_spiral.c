@@ -48,7 +48,7 @@ void display_ulam_spiral(SDL_Renderer *renderer, int x_coordinate, int y_coordin
 
 void render_ulam_spiral() {
     coordinate center = find_center(ROW, COLUMN);
-    place_numbers_in_spiral(center, ulam_spiral);
+    create_ulam_spiral(center, ulam_spiral);
     int y_position = 0;
     char possible_characters_in_a_row[80];
     char possible_prime_number[MAX_NUM_OF_DIGITS + 1];
@@ -90,13 +90,13 @@ void render() {
     SDL_RenderPresent(renderer);
 }
 
-void main_loop() {
+void run_program() {
     while(true) {
         process_input();
         render();
     }
 }
 
-void run_program() {
-    main_loop();
+void run_sdl_ulam_spiral() {
+    run_program();
 }

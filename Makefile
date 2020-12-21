@@ -2,7 +2,7 @@ CC = gcc
 LDFLAGS = `sdl2-config --libs` -lSDL2 -lSDL2_ttf -lm
 PROG = sdl-ulam-spiral
 
-SRCS = $(addprefix src/, main.c init.c global.c utils.c spiral.c sdl_ulam_spiral.c)
+SRCS = $(addprefix src/, main.c init.c global.c utils.c ulam_spiral.c sdl_ulam_spiral.c)
 
 OBJS = $(SRCS:.c=.o)
 

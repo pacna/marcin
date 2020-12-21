@@ -64,6 +64,8 @@ unsigned int determine_which_direction(unsigned int *current_step, unsigned int 
             return Down;
         }
     }
+
+    return -1;
 }
 
 void place_number(coordinate current_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number) {
@@ -107,7 +109,7 @@ void move_down(unsigned int *x_position, unsigned int y_position, unsigned char 
     place_number(current_position, spiral, prime_number);
 }
 
-void place_numbers_in_spiral(coordinate center, unsigned char spiral[ROW][COLUMN]) {
+void create_ulam_spiral(coordinate center, unsigned char spiral[ROW][COLUMN]) {
     unsigned int x_position = center.x;
     unsigned int y_position = center.y;
     unsigned int current_step = 0;
@@ -134,7 +136,9 @@ void place_numbers_in_spiral(coordinate center, unsigned char spiral[ROW][COLUMN
 
             case Down:
                 move_down(&x_position, y_position, spiral, prime_number);
-                break;   
+                break;
+            default:
+                break;
         }
     }
 }

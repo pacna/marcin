@@ -23,7 +23,7 @@ extern SDL_Renderer *renderer;
 
 // custom header
 #include "utils.h"
-#include "spiral.h"
+#include "ulam_spiral.h"
 #include "init.h"
 
 #endif

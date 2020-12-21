@@ -1,18 +1,18 @@
 #include "main.h"
 
-int main(int argc) {
+int main(int argc, char *argv[]) {
    if (argc == TERMINAL_MODE) {      
       coordinate center = find_center(ROW, COLUMN);
-      place_numbers_in_spiral(center, ulam_spiral);
+      create_ulam_spiral(center, ulam_spiral);
 
       print_ulam_spiral_in_terminal(ulam_spiral);
    } 
    else {
-      if(!init_program()) {
+      if(!init_sdl_ulam_spiral()) {
          return -1;
       }
 
-      run_program();
+      run_sdl_ulam_spiral();
    }
 
    return 0;
