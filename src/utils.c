@@ -10,7 +10,7 @@ bool is_prime(int num) {
 
    int init_num = 5;
 
-    while ((init_num * init_num) <=  num) {
+    while ((init_num * init_num) <= num) {
         if (num % init_num == 0  || num % (init_num + 2 ) == 0) {
             return false;
         }

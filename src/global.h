@@ -7,9 +7,12 @@
 extern unsigned char ulam_spiral[ROW][COLUMN];
 
 // C header
-#include <stdio.h>
-#include <stdbool.h>
+#include <ctype.h>
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
 // third party header
 #include <SDL2/SDL.h>
