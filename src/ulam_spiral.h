@@ -1,12 +1,13 @@
-#ifndef _ULAM_SPIRAL
-#define _ULAM_SPIRAL
+#ifndef ULAM_SPIRAL__
+#define ULAM_SPIRAL__
 
-enum DIRECTION {
+enum DIRECTION
+{
     Right = 0,
     Up = 1,
     Left = 2,
-    Down = 3 
+    Down = 3
 };
 
-extern void create_ulam_spiral(coordinate center, unsigned char spiral[ROW][COLUMN]);
+extern void create_ulam_spiral(coordinate_t center, unsigned char spiral[ROW][COLUMN]);
 #endif
