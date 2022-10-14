@@ -1,6 +1,8 @@
 #ifndef ULAM_SPIRAL__
 #define ULAM_SPIRAL__
 
+#define SIZE_OF_SPIRAL ROW *COLUMN
+
 enum DIRECTION
 {
     Right = 0,

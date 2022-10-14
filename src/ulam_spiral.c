@@ -1,15 +1,16 @@
 #include "global.h"
 
-unsigned int size_of_spiral = ROW * COLUMN;
-
 // order matters. right -> up
-unsigned int should_go_right = true;
-unsigned int should_go_up = false;
+static bool should_go_right = true;
+static bool should_go_up = false;
 // order matters. left -> down
-unsigned int should_go_left = true;
-unsigned int should_go_down = false;
+static bool should_go_left = true;
+static bool should_go_down = false;
 
-unsigned int determine_which_direction(unsigned int *current_step, unsigned int *max_step)
+/**
+ *  --- Private Functions ---
+ **/
+static unsigned int determine_which_direction(unsigned int *current_step, unsigned int *max_step)
 {
     if (!is_even(*max_step))
     {
@@ -81,17 +82,17 @@ unsigned int determine_which_direction(unsigned int *current_step, unsigned int 
     return -1;
 }
 
-void place_number(coordinate_t current_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
+static void place_number(coordinate_t current_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
 {
     unsigned int current_size = current_position.x * current_position.y;
     // make sure we aren't placing numbers outside of the spiral.
-    if (current_size <= size_of_spiral)
+    if (current_size <= SIZE_OF_SPIRAL)
     {
         spiral[current_position.x][current_position.y] = prime_number;
     }
 }
 
-void move_right(unsigned int x_position, unsigned int *y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
+static void move_right(unsigned int x_position, unsigned int *y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
 {
     (*y_position)++;
     coordinate_t current_position;
@@ -100,7 +101,7 @@ void move_right(unsigned int x_position, unsigned int *y_position, unsigned char
     place_number(current_position, spiral, prime_number);
 }
 
-void move_left(unsigned int x_position, unsigned int *y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
+static void move_left(unsigned int x_position, unsigned int *y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
 {
     (*y_position)--;
     coordinate_t current_position;
@@ -109,7 +110,7 @@ void move_left(unsigned int x_position, unsigned int *y_position, unsigned char 
     place_number(current_position, spiral, prime_number);
 }
 
-void move_up(unsigned int *x_position, unsigned int y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
+static void move_up(unsigned int *x_position, unsigned int y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
 {
     (*x_position)--;
     coordinate_t current_position;
@@ -118,7 +119,7 @@ void move_up(unsigned int *x_position, unsigned int y_position, unsigned char sp
     place_number(current_position, spiral, prime_number);
 }
 
-void move_down(unsigned int *x_position, unsigned int y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
+static void move_down(unsigned int *x_position, unsigned int y_position, unsigned char spiral[ROW][COLUMN], unsigned char prime_number)
 {
     (*x_position)++;
     coordinate_t current_position;
@@ -127,6 +128,9 @@ void move_down(unsigned int *x_position, unsigned int y_position, unsigned char 
     place_number(current_position, spiral, prime_number);
 }
 
+/**
+ *  --- Public Functions ---
+ **/
 void create_ulam_spiral(coordinate_t center, unsigned char spiral[ROW][COLUMN])
 {
     unsigned int x_position = center.x;
@@ -136,7 +140,7 @@ void create_ulam_spiral(coordinate_t center, unsigned char spiral[ROW][COLUMN])
 
     spiral[center.x][center.y] = '*';
 
-    for (int i = 2; i <= size_of_spiral; i++)
+    for (int i = 2; i <= SIZE_OF_SPIRAL; i++)
     {
         unsigned int command = determine_which_direction(&current_step, &max_step);
         unsigned char prime_number = get_prime_number_or_not(i);

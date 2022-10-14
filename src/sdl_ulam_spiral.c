@@ -1,5 +1,8 @@
 #include "global.h"
 
+/**
+ *  --- Private Functions ---
+ **/
 static void process_input(void)
 {
     SDL_Event event;
@@ -24,19 +27,18 @@ static void display_ulam_spiral(SDL_Renderer *renderer, int x_coordinate, int y_
 
     if (!open_sans)
     {
-        printf("Could not initialize font: %s\n", SDL_GetError());
+        log_error_with_added_text("Could not initialize font: ", SDL_GetError());
     }
 
-    SDL_Color green = {37, 193, 29};
+    SDL_Color color = get_sdl_rgba(green);
 
     SDL_Rect message_rect;
-
     message_rect.x = x_coordinate;
     message_rect.y = y_coordinate;
     message_rect.w = rect_text_width;
     message_rect.h = rect_text_height;
 
-    SDL_Surface *surface_message = TTF_RenderText_Solid(open_sans, ulam_output, green);
+    SDL_Surface *surface_message = TTF_RenderText_Solid(open_sans, ulam_output, color);
 
     SDL_Texture *message = SDL_CreateTextureFromSurface(renderer, surface_message);
 
@@ -91,16 +93,22 @@ static void render_ulam_spiral(void)
             memset(possible_prime_number, 0, strlen(possible_prime_number));
         }
         display_ulam_spiral(renderer, 0, y_position, possible_characters_in_a_row);
-        y_position += 80;
+        y_position += 100;
         // empty out possible_characters_in_a_row
         memset(possible_characters_in_a_row, 0, strlen(possible_characters_in_a_row));
     }
 }
 
+static void render_background(void)
+{
+    SDL_Color background_rgba = get_sdl_rgba(black);
+    SDL_SetRenderDrawColor(renderer, background_rgba.r, background_rgba.g, background_rgba.b, background_rgba.a);
+}
+
 static void render(void)
 {
     // color should look like the vs code monokai background color
-    SDL_SetRenderDrawColor(renderer, 38, 41, 34, 1);
+    render_background();
     SDL_RenderClear(renderer);
     render_ulam_spiral();
     SDL_RenderPresent(renderer);
@@ -115,6 +123,9 @@ static void run_program(void)
     }
 }
 
+/**
+ *  --- Public Functions ---
+ **/
 void run_sdl_ulam_spiral(void)
 {
     run_program();
