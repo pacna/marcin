@@ -10,7 +10,7 @@ static bool should_go_down = false;
 /**
  *  --- Private Functions ---
  **/
-static unsigned int determine_which_direction(unsigned int *current_step, unsigned int *max_step)
+static int determine_which_direction(unsigned int *current_step, unsigned int *max_step)
 {
     if (!is_even(*max_step))
     {
@@ -45,7 +45,8 @@ static unsigned int determine_which_direction(unsigned int *current_step, unsign
             return Up;
         }
     }
-    else if (is_even(*max_step))
+
+    if (is_even(*max_step))
     {
         (*current_step)++;
         // order matters. left -> down

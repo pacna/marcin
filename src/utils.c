@@ -7,7 +7,8 @@ bool is_prime(int num)
     {
         return num > 1;
     }
-    else if (num % 2 == 0 || num % 3 == 0)
+    
+    if (num % 2 == 0 || num % 3 == 0)
     {
         return false;
     }
@@ -38,24 +39,14 @@ unsigned char get_prime_number_or_not(int num)
     {
         return num;
     }
-    else
-    {
-        return '*';
-    }
+
+    return '*';
 }
 
 coordinate_t find_center(unsigned int row, unsigned int column)
 {
     double center_row = floor(row / 2);
-    double center_column;
-    if (is_even(row))
-    {
-        center_column = floor(column / 2) - 1;
-    }
-    else
-    {
-        center_column = floor(column / 2);
-    }
+    double center_column = is_even(row) ? floor(column / 2) - 1 : floor(column / 2); 
 
     coordinate_t center;
     center.x = (int)center_row;

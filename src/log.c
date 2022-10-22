@@ -3,7 +3,7 @@
 /**
  *  --- Private Functions ---
  **/
-static void reset_to_default_color()
+static void reset_to_default_color(void)
 {
     printf("\033[0m");
 }

@@ -66,26 +66,12 @@ static void render_ulam_spiral(void)
             if (ulam_spiral[i][j] != '*')
             {
                 // no need to create add space at the last possible_prime_number
-                if (j == COLUMN - 1)
-                {
-                    sprintf(possible_prime_number, "%d", ulam_spiral[i][j]);
-                }
-                else
-                {
-                    sprintf(possible_prime_number, "%d ", ulam_spiral[i][j]);
-                }
+                sprintf(possible_prime_number, "%d%s", ulam_spiral[i][j], (j == COLUMN - 1) ? "" : " ");
             }
             else
             {
                 // no need to create add space at the last possible_prime_number
-                if (j == COLUMN - 1)
-                {
-                    sprintf(possible_prime_number, "%c", ulam_spiral[i][j]);
-                }
-                else
-                {
-                    sprintf(possible_prime_number, "%c ", ulam_spiral[i][j]);
-                }
+                sprintf(possible_prime_number, "%c%s", ulam_spiral[i][j], (j == COLUMN - 1) ? "" : " ");
             }
 
             strcat(possible_characters_in_a_row, possible_prime_number);
