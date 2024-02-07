@@ -20,7 +20,7 @@ static int init_window(void)
     init_SDL();
 
     window = SDL_CreateWindow(
-        "SDL Ulam Spiral",
+        "Marcin",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         WINDOW_WIDTH, WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN);

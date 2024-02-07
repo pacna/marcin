@@ -1,12 +1,12 @@
-# SDL Ulam Spiral
+# Marcin
 
-SDL Ulam Spiral is a [Ulam Spiral](https://en.wikipedia.org/wiki/Ulam_spiral) generator written in C. The project is built using the SDL Library and can be run in both SDL app mode and a terminal app mode.
+Marcin is a C-based [Ulam Spiral](https://en.wikipedia.org/wiki/Ulam_spiral) generator, utilizing the SDL Library. This versatile project allows users to effortlessly switch between an SDL application or terminal mode for added flexibility and ease of use.
 
-### SDL app mode
+## SDL mode
 
-![sdl-ulam-spiral](./docs/sdl-ulam-spiral.png)
+![marcin](./docs/marcin.png)
 
-### Terminal app mode
+## Terminal mode
 
 ```bash
 *       *       *       61      *       59      *       *
@@ -21,21 +21,24 @@ SDL Ulam Spiral is a [Ulam Spiral](https://en.wikipedia.org/wiki/Ulam_spiral) ge
 
 ## Ubuntu Prerequisites
 
-Before running SDL Ulam Spiral, make sure you have the following installed on your system:
+Before you can build and run Marcin, make sure you have the following installed on your system:
 
 1. [Make](https://www.gnu.org/software/make/)
 2. GCC (`apt install gcc`)
 3. SDL library (`apt-get install libsdl2-ttf-dev`)
 
-## Building and Running
+## Build and Run Instructions
 
-To build and run SDL Ulam Spiral, use the following commands:
+To build and run the project as an SDL app, execute:
 
 ```bash
-# SDL app mode
 $ make
-$ make OPT=sdl
+# or
+$ make sdl
+```
 
-# Terminal app mode
-$ make OPT=terminal
+For running in the terminal, use:
+
+```bash
+$ make terminal
 ```
